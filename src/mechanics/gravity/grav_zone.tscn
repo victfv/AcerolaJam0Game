@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://3csrsktvppw2"]
+
+[ext_resource type="Script" path="res://src/mechanics/gravity/grav_zone.gd" id="1_5xu0u"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ns8k1"]
+top_radius = 0.0
+bottom_radius = 0.25
+height = 1.0
+radial_segments = 16
+
+[node name="GravZone" type="Area3D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_5xu0u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541347, 0)
+mesh = SubResource("CylinderMesh_ns8k1")

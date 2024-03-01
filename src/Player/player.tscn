@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://ol00uj0yiyak"]
+
+[ext_resource type="Script" path="res://src/Player/Movement.gd" id="1_bjtaa"]
+[ext_resource type="Script" path="res://src/Player/Input.gd" id="2_xd5i4"]
+[ext_resource type="Script" path="res://src/Player/Cam.gd" id="3_g0881"]
+[ext_resource type="Script" path="res://src/Player/FloorRays.gd" id="4_gkb5q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u13qr"]
+radius = 0.35
+height = 1.6
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("player", "input", "floorRays", "cam")]
+script = ExtResource("1_bjtaa")
+player = NodePath("..")
+input = NodePath("../Input")
+floorRays = NodePath("../CamY/FloorRays")
+cam = NodePath("../CamY")
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("2_xd5i4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_u13qr")
+
+[node name="CamY" type="Node3D" parent="." node_paths=PackedStringArray("input")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50223, 0)
+script = ExtResource("3_g0881")
+input = NodePath("../Input")
+
+[node name="CamX" type="Node3D" parent="CamY"]
+
+[node name="Camera3D" type="Camera3D" parent="CamY/CamX"]
+current = true
+
+[node name="FloorRays" type="Node3D" parent="CamY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.50223, 0)
+script = ExtResource("4_gkb5q")
+
+[node name="RayCast3D" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.453598, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.453598, -0.311709)
+
+[node name="RayCast3D3" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.45407, 0.312)
+
+[node name="RayCast3D4" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0.312, 0.45407, 0)
+
+[node name="RayCast3D5" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -0.312, 0.45407, 0)
+
+[node name="RayCast3D6" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(0.707107, -0.183013, -0.683013, 0, 0.965926, -0.258819, 0.707107, 0.183013, 0.683013, 0.220463, 0.453598, -0.22039)
+
+[node name="RayCast3D7" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(0.707107, 0.183013, -0.683013, 0, 0.965926, 0.258819, 0.707107, -0.183013, 0.683013, -0.220566, 0.45407, 0.220639)
+
+[node name="RayCast3D8" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(0.683013, -0.183013, -0.707107, 0.258819, 0.965926, 0, 0.683013, -0.183013, 0.707107, 0.220669, 0.45407, 0.220639)
+
+[node name="RayCast3D9" type="RayCast3D" parent="CamY/FloorRays"]
+transform = Transform3D(0.683013, 0.183013, -0.707107, -0.258819, 0.965926, 0, 0.683013, 0.183013, 0.707107, -0.220566, 0.45407, -0.220596)
