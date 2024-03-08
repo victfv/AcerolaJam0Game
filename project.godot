@@ -21,7 +21,7 @@ gdscript/warnings/untyped_declaration=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csgtomeshinstance/plugin.cfg", "res://addons/proto_shape/plugin.cfg")
+enabled=PackedStringArray("res://addons/array_modifier/plugin.cfg", "res://addons/csgtomeshinstance/plugin.cfg", "res://addons/proto_shape/plugin.cfg")
 
 [input]
 
@@ -55,6 +55,7 @@ L={
 
 [rendering]
 
-renderer/rendering_method="mobile"
 reflections/reflection_atlas/reflection_size=128
+scaling_3d/fsr_sharpness=1.2
+environment/screen_space_reflection/roughness_quality=3
 anti_aliasing/quality/use_debanding=true

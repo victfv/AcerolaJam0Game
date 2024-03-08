@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://dmcyxb76cstls"]
+[gd_scene load_steps=2 format=3 uid="uid://dmcyxb76cstls"]
+
+[ext_resource type="PackedScene" uid="uid://blekkkmhkd4rk" path="res://assets/Meshes/Camera/Camera.glb" id="1_eg4kf"]
 
 [node name="Camera" type="Node3D"]
+
+[node name="Camera" parent="." instance=ExtResource("1_eg4kf")]
